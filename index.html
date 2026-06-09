@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio MPI – Bayu Setiadji, S.Pd., Gr.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:       #0d9488;
+      --teal-light: #14b8a6;
+      --teal-dim:   #ccfbf1;
+      --blue:       #0ea5e9;
+      --dark:       #0f172a;
+      --dark-2:     #1e293b;
+      --dark-3:     #334155;
+      --mid:        #64748b;
+      --light:      #f0fdf9;
+      --white:      #ffffff;
+      --radius:     1rem;
+      --shadow:     0 4px 24px rgba(13,148,136,.12);
+      --shadow-lg:  0 12px 40px rgba(13,148,136,.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", sans-serif; background: var(--light); color: var(--dark); line-height: 1.65; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+    .section-label {
+      display: inline-block; font-family: "Syne", sans-serif; font-size: .75rem;
+      font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--teal); background: var(--teal-dim); padding: .3rem .85rem;
+      border-radius: 99px; margin-bottom: 1rem;
+    }
+    .section-title { font-family: "Syne", sans-serif; font-size: clamp(1.75rem,4vw,2.6rem); font-weight: 800; line-height: 1.15; color: var(--dark); }
+    .section-title span { color: var(--teal); }
+
+    /* NAVBAR */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); background: rgba(240,253,249,.85); border-bottom: 1px solid rgba(13,148,136,.1); transition: box-shadow .3s; }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(13,148,136,.1); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: .9rem 1.5rem; max-width: 1140px; margin: 0 auto; }
+    .nav-brand { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--dark); }
+    .nav-brand span { color: var(--teal); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: .9rem; font-weight: 500; color: var(--dark-3); transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta { background: var(--teal); color: #fff !important; padding: .45rem 1.1rem; border-radius: 99px; font-size: .875rem !important; font-weight: 600 !important; transition: background .2s, transform .2s !important; }
+    .nav-cta:hover { background: var(--teal-light) !important; transform: translateY(-1px); }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 7rem 0 5rem; position: relative; overflow: hidden; }
+    #hero::before { content: ""; position: absolute; top: -10%; right: -10%; width: 60vw; height: 60vw; max-width: 700px; max-height: 700px; background: radial-gradient(circle,rgba(20,184,166,.18) 0%,transparent 70%); border-radius: 50%; animation: blobPulse 8s ease-in-out infinite alternate; pointer-events: none; }
+    #hero::after { content: ""; position: absolute; bottom: -5%; left: -8%; width: 45vw; height: 45vw; max-width: 500px; max-height: 500px; background: radial-gradient(circle,rgba(14,165,233,.12) 0%,transparent 70%); border-radius: 50%; animation: blobPulse 10s ease-in-out infinite alternate-reverse; pointer-events: none; }
+    @keyframes blobPulse { from { transform: scale(1) translateY(0); } to { transform: scale(1.08) translateY(-20px); } }
+    .hero-grid { position: absolute; inset: 0; background-image: radial-gradient(circle,rgba(13,148,136,.15) 1px,transparent 1px); background-size: 36px 36px; pointer-events: none; z-index: 0; }
+    .hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+    .hero-text { flex: 1; min-width: 280px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: var(--teal-dim); color: var(--teal); font-size: .8rem; font-weight: 600; padding: .35rem .9rem; border-radius: 99px; margin-bottom: 1.4rem; animation: fadeUp .6s ease both; }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: blink 1.4s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+    .hero-name { font-family: "Syne", sans-serif; font-size: clamp(2.2rem,6vw,3.8rem); font-weight: 800; line-height: 1.1; margin-bottom: .5rem; animation: fadeUp .7s .1s ease both; }
+    .hero-name .accent { color: var(--teal); }
+    .hero-gelar { font-size: 1rem; font-weight: 500; color: var(--mid); margin-bottom: .3rem; animation: fadeUp .7s .15s ease both; }
+    .hero-sekolah { display: inline-flex; align-items: center; gap: .4rem; font-size: .95rem; font-weight: 600; color: var(--dark-2); margin-bottom: 1.5rem; animation: fadeUp .7s .2s ease both; }
+    .hero-tagline { font-size: 1.1rem; color: var(--dark-3); max-width: 480px; line-height: 1.7; margin-bottom: 2rem; animation: fadeUp .7s .25s ease both; }
+    .hero-tagline strong { color: var(--teal); font-weight: 600; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp .7s .3s ease both; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .5rem; background: var(--teal); color: #fff; padding: .75rem 1.7rem; border-radius: 99px; font-weight: 600; font-size: .95rem; transition: background .25s, transform .25s, box-shadow .25s; box-shadow: 0 4px 16px rgba(13,148,136,.3); }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,148,136,.35); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: .5rem; background: transparent; color: var(--teal); border: 2px solid var(--teal); padding: .73rem 1.5rem; border-radius: 99px; font-weight: 600; font-size: .95rem; transition: background .25s, color .25s, transform .25s; }
+    .btn-secondary:hover { background: var(--teal); color: #fff; transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp .7s .4s ease both; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: "Syne", sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--teal); line-height: 1; }
+    .stat-label { font-size: .8rem; color: var(--mid); margin-top: .25rem; }
+    .hero-visual { flex-shrink: 0; position: relative; animation: fadeUp .8s .2s ease both; }
+    .avatar-wrap { position: relative; width: 280px; height: 280px; }
+    @media (max-width: 768px) { .avatar-wrap { width: 200px; height: 200px; } .hero-inner { justify-content: center; text-align: center; } .hero-actions,.hero-stats { justify-content: center; } .hero-tagline { margin: 0 auto 2rem; } }
+    .avatar-ring { position: absolute; inset: -12px; border-radius: 50%; border: 2.5px dashed rgba(13,148,136,.35); animation: spin 30s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar-ring-2 { position: absolute; inset: -28px; border-radius: 50%; border: 1.5px dashed rgba(14,165,233,.2); animation: spin 50s linear infinite reverse; }
+    .float-badge { position: absolute; background: #fff; border-radius: .75rem; padding: .45rem .75rem; font-size: .75rem; font-weight: 700; box-shadow: 0 4px 16px rgba(0,0,0,.1); display: flex; align-items: center; gap: .35rem; animation: float 4s ease-in-out infinite alternate; }
+    @keyframes float { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+    .avatar-initials { width: 100%; height: 100%; border-radius: 50%; background: linear-gradient(135deg,#ccfbf1,#e0f2fe); border: 5px solid #fff; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; font-family: "Syne", sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--teal); }
+    .avatar-photo { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 5px solid #fff; box-shadow: var(--shadow-lg); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* SECTION */
+    .section { padding: 5rem 0; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-sub { max-width: 520px; margin: .75rem auto 0; color: var(--mid); font-size: 1rem; }
+
+    /* GRID KARTU */
+    #karya { background: #fff; }
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; }
+    .mpi-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform .3s, box-shadow .3s; border: 1px solid rgba(13,148,136,.07); }
+    .mpi-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .card-thumb { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; overflow: hidden; }
+    .card-thumb.fisika  { background: linear-gradient(135deg,#e0f2fe,#bfdbfe); }
+    .card-thumb.biologi { background: linear-gradient(135deg,#dcfce7,#bbf7d0); }
+    .card-thumb.kimia   { background: linear-gradient(135deg,#fef9c3,#fde68a); }
+    .card-thumb.bumi    { background: linear-gradient(135deg,#fce7f3,#fbcfe8); }
+    .card-thumb .thumb-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle,rgba(255,255,255,.4) 1px,transparent 1px); background-size: 20px 20px; }
+    .card-thumb .thumb-emoji { position: relative; z-index: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,.1)); line-height: 1; }
+    .card-cat-badge { position: absolute; top: .75rem; left: .75rem; font-size: .7rem; font-weight: 700; padding: .25rem .6rem; border-radius: 99px; z-index: 1; font-family: "Syne", sans-serif; }
+    .badge-fisika  { background: #dbeafe; color: #1d4ed8; }
+    .badge-biologi { background: #dcfce7; color: #15803d; }
+    .badge-kimia   { background: #fef3c7; color: #b45309; }
+    .badge-bumi    { background: #fce7f3; color: #9d174d; }
+    .card-body { padding: 1.25rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .card-title { font-family: "Syne", sans-serif; font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: .5rem; line-height: 1.35; }
+    .card-desc { font-size: .875rem; color: var(--mid); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.1rem; }
+    .card-tag { font-size: .7rem; font-weight: 600; padding: .2rem .55rem; border-radius: 99px; background: var(--teal-dim); color: var(--teal); }
+    .btn-play { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; padding: .65rem; border-radius: .7rem; background: var(--teal); color: #fff; font-weight: 600; font-size: .9rem; transition: background .25s, transform .2s; }
+    .btn-play:hover { background: var(--teal-light); transform: scale(1.02); }
+
+    /* TENTANG */
+    #tentang { background: linear-gradient(135deg,var(--dark) 0%,var(--dark-2) 100%); color: #fff; position: relative; overflow: hidden; }
+    #tentang::before { content: ""; position: absolute; top: -30%; right: -10%; width: 50vw; height: 50vw; max-width: 500px; max-height: 500px; background: radial-gradient(circle,rgba(20,184,166,.12) 0%,transparent 60%); border-radius: 50%; pointer-events: none; }
+    .tentang-inner { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; position: relative; z-index: 1; }
+    .tentang-text { flex: 1; min-width: 260px; }
+    .tentang-text .section-label { background: rgba(20,184,166,.15); }
+    .tentang-text .section-title { color: #fff; }
+    .tentang-text p { color: rgba(255,255,255,.75); margin-top: 1rem; line-height: 1.8; }
+    .tentang-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    .pill { display: flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.85); padding: .4rem .85rem; border-radius: 99px; font-size: .85rem; font-weight: 500; }
+    .tentang-visual { flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 1rem; }
+    .info-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius); padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 1rem; transition: background .3s; }
+    .info-card:hover { background: rgba(255,255,255,.1); }
+    .info-icon { width: 44px; height: 44px; border-radius: .6rem; background: rgba(20,184,166,.2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .info-label { font-size: .75rem; color: rgba(255,255,255,.5); margin-bottom: .15rem; }
+    .info-value { font-size: .95rem; font-weight: 600; color: #fff; }
+
+    /* FOOTER */
+    footer { background: var(--dark); color: rgba(255,255,255,.8); padding: 4rem 0 2rem; }
+    .footer-inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+    .footer-brand .nav-brand { font-size: 1.3rem; margin-bottom: .8rem; }
+    .footer-brand p { font-size: .875rem; line-height: 1.75; color: rgba(255,255,255,.55); max-width: 280px; }
+    .footer-social { display: flex; gap: .75rem; margin-top: 1.25rem; }
+    .social-btn { width: 40px; height: 40px; border-radius: .6rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.7); transition: all .25s; font-size: 1.1rem; }
+    .social-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; transform: translateY(-2px); }
+    .footer-col h4 { font-family: "Syne", sans-serif; font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-links a { font-size: .875rem; color: rgba(255,255,255,.55); transition: color .2s; }
+    .footer-links a:hover { color: var(--teal); }
+    .contact-item { display: flex; align-items: center; gap: .6rem; font-size: .875rem; color: rgba(255,255,255,.55); margin-bottom: .65rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; font-size: .8rem; color: rgba(255,255,255,.35); }
+    .footer-bottom span { color: var(--teal); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* BACK TOP */
+    #backTop { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--teal); color: #fff; border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 16px rgba(13,148,136,.4); opacity: 0; transform: translateY(10px); transition: opacity .3s, transform .3s, background .2s; z-index: 99; }
+    #backTop.show { opacity: 1; transform: translateY(0); }
+    #backTop:hover { background: var(--teal-light); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">MPI<span>Lab</span> · Bayu</div>
+      <ul class="nav-links">
+        <li><a href="#hero">Beranda</a></li>
+        <li><a href="#karya">Karya</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak" class="nav-cta">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge"><div class="dot"></div> Portofolio Media Pembelajaran Interaktif</div>
+          <!-- ✏️ UBAH: nama -->
+          <h1 class="hero-name">Bayu <span class="accent">Setiadji</span></h1>
+          <p class="hero-gelar">Guru IPA</p>
+          <div class="hero-sekolah">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            SMPN 3 Besuki
+          </div>
+          <!-- ✏️ UBAH: tagline -->
+          <p class="hero-tagline">
+            Menghadirkan <strong>pengalaman belajar IPA yang menyenangkan</strong> melalui
+            media interaktif berbasis teknologi dari sel hingga alam semesta, semuanya bisa dijelajahi bersama!
+          </p>
+          <div class="hero-actions">
+            <a href="#karya" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Lihat Karya MPI
+            </a>
+            <a href="#tentang" class="btn-secondary">
+              Tentang Saya
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+          <!-- ✏️ UBAH: statistik -->
+          <div class="hero-stats">
+            <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Karya MPI</div></div>
+            <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Cabang IPA</div></div>
+            <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Tahun Mengajar</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="avatar-wrap">
+            <div class="avatar-ring"></div>
+            <div class="avatar-ring-2"></div>
+            <!-- ============================================================
+                 ✏️ CARA GANTI FOTO PROFIL:
+                 1. Simpan foto Anda (misal: foto.jpg) di folder yang sama
+                 2. Hapus baris <div class="avatar-initials">BS</div>
+                 3. Ganti dengan: <img src="foto.jpg" alt="Foto" class="avatar-photo">
+                 ============================================================ -->
+            <img src="foto.png" alt="Foto" class="avatar-photo">
+            <div class="float-badge" style="top:-10px;right:-35px;color:#1d4ed8;"><span>⚡</span> Fisika</div>
+            <div class="float-badge" style="bottom:30px;left:-40px;color:#15803d;animation-delay:1.5s;"><span>🧬</span> Biologi</div>
+            <div class="float-badge" style="bottom:-5px;right:-25px;color:#b45309;animation-delay:.8s;"><span>⚗️</span> Kimia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI KARYA MPI -->
+  <section id="karya" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Galeri Karya</span>
+        <h2 class="section-title">Kumpulan <span>Media Pembelajaran</span> Interaktif</h2>
+        <p class="section-sub">Media berbasis digital yang dirancang untuk membuat belajar IPA lebih menyenangkan dan bermakna.</p>
+      </div>
+
+      <!-- ============================================================
+           GRID KARTU MPI
+           ┌──────────────────────────────────────────────────────────┐
+           │                  📌 PANDUAN KARTU MPI                   │
+           │                                                          │
+           │ Setiap kartu dibungkus dalam <div class="mpi-card">     │
+           │                                                          │
+           │ Yang perlu diubah tiap kartu:                           │
+           │  1. class di .card-thumb → fisika/biologi/kimia/bumi    │
+           │  2. Emoji di .thumb-emoji                               │
+           │  3. class di .card-cat-badge → badge-[kategori]         │
+           │  4. Teks label badge                                     │
+           │  5. .card-title → judul MPI                             │
+           │  6. .card-desc  → deskripsi singkat                     │
+           │  7. .card-tag   → tag fitur/teknologi                   │
+           │  8. href tombol → link eksternal MPI Anda               │
+           │                                                          │
+           │ Warna thumbnail tersedia:                                │
+           │   fisika  = biru muda                                   │
+           │   biologi = hijau muda                                  │
+           │   kimia   = kuning muda                                 │
+           │   bumi    = merah muda                                  │
+           │                                                          │
+           │ TAMBAH KARTU BARU: salin satu blok kartu lengkap,      │
+           │ tempel SEBELUM baris </div> penutup cards-grid,         │
+           │ lalu edit isinya.                                        │
+           └──────────────────────────────────────────────────────────┘
+           ============================================================ -->
+      <div class="cards-grid" id="karya-grid">
+
+        <!-- ============================================================
+             KARTU 1 – Listrik Statis (Fisika)
+             ============================================================ -->
+        <div class="mpi-card reveal">
+          <div class="card-thumb fisika" style="padding:0; position:relative;">
+            <img src="listrik.png" alt="Listrik Statis" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <span class="card-cat-badge badge-fisika" style="position:absolute; top:.75rem; left:.75rem;">Fisika</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">MPI Petualangan Listrik Statis – Kelas IX</h3>
+            <p class="card-desc">Belajar listrik statis seru dengan game map petualangan listrik statis.</p>
+            <div class="card-tags">
+              <span class="card-tag">Animasi</span>
+              <span class="card-tag">Game Map</span>
+              <span class="card-tag">Kelas IX</span>
+            </div>
+            <!-- ✏️ UBAH href ke link MPI Anda -->
+            <a href="https://app.lumi.education/run/OB17yI" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+        <!-- END KARTU 1 -->
+
+        <!-- ============================================================
+             KARTU 2 – Tarik Tambang Listrik Statis (Fisika)
+             ============================================================ -->
+        <div class="mpi-card reveal">
+          <div class="card-thumb fisika">
+            <img src="kuislistrik.png" alt="Listrik Statis" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <span class="card-cat-badge badge-fisika">Fisika</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">MPI Kuis Tarik Tambang Listrik Statis – Kelas IX</h3>
+            <p class="card-desc">Kuis yang menguji pemahaman tentang listrik statis dalam bentuk permainan tarik tambang yang bisa dimainkan berkelompok, untuk masuk permainan masukkan pasword : guruipa01</p>
+            <div class="card-tags">
+              <span class="card-tag">Kuis</span>
+              <span class="card-tag">Listrik Statis</span>
+              <span class="card-tag">Kelas IX</span>
+            </div>
+            <!-- ✏️ UBAH href ke link MPI Anda -->
+            <a href="https://spentribes.my.canva.site/permainan-tarik-tambang-listrik-statis" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+        <!-- END KARTU 2 -->
+
+        <!-- ============================================================
+             KARTU 3 – Simulasi Perubahan Materi (Fisika/Kimia)
+             ============================================================ -->
+        <div class="mpi-card reveal">
+          <div class="card-thumb Fisika">
+            <img src="simulasiperubahanmateri.png" alt="Perubahan Materi" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <span class="card-cat-badge badge-fisika">Fisika</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">MPI Simulasi Perubahan Materi – Kelas VII</h3>
+            <p class="card-desc">Simulasi sederhana tentang perubahan materi untuk mendukung pembelajaran konsep perubahan fisika dan kimia.</p>
+            <div class="card-tags">
+              <span class="card-tag">Simulasi</span>
+              <span class="card-tag">Perubahan Materi</span>
+              <span class="card-tag">Kelas VII</span>
+            </div>
+            <!-- ✏️ UBAH href ke link MPI Anda -->
+            <a href="https://spentribes.my.canva.site/simulasi-perubahan-materi-ipa" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+        <!-- END KARTU 3 -->
+
+        <!-- ============================================================
+             KARTU 4 – Simulasi Asam dan Basa (Kimia)
+             ============================================================ -->
+        <div class="mpi-card reveal">
+          <div class="card-thumb kimia">
+            <img src="simulasiasambasa.png" alt="asam basa" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <span class="card-cat-badge badge-kimia">Kimia</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">MPI Simulasi Asam dan Basa – SMP </h3>
+            <p class="card-desc">Pelajari konsep asam dan basa dengan cara yang menyenangkan melalui materi interaktif, simulasi virtual, dan kuis seru.</p>
+            <div class="card-tags">
+              <span class="card-tag">Simulasi</span>
+              <span class="card-tag">Asam Basa</span>
+              <span class="card-tag">Kelas VIII</span>
+            </div>
+            <!-- ✏️ UBAH href ke link MPI Anda -->
+            <a href="https://spentribes.my.canva.site/asambasa" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+        <!-- END KARTU 4 -->
+
+         <!-- ============================================================
+             KARTU 5 – Simulasi Soal OSN IPA 2026
+             ============================================================ -->
+        <div class="mpi-card reveal">
+          <div class="card-thumb Fisika">
+            <img src="simulasiosnipa1.png" alt="fisika" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <span class="card-cat-badge badge-fisika">IPA</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Simulasi OSN IPA 2026 – SMP </h3>
+            <p class="card-desc">Berlatih soal-soal OSN IPA.</p>
+            <div class="card-tags">
+              <span class="card-tag">Soal</span>
+              <span class="card-tag">OSN IPA</span>
+              <span class="card-tag">SMP</span>
+            </div>
+            <!-- ✏️ UBAH href ke link MPI Anda -->
+            <a href="https://bayusetiadji60-bot.github.io/Simulasi-OSN-IPA-Spentribes" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+        <!-- END KARTU 5 -->
+
+        <!-- ============================================================
+             KARTU 6 – Simulasi Soal OSN IPA 2026
+             ============================================================ -->
+        <div class="mpi-card reveal">
+          <div class="card-thumb Fisika">
+            <img src="simulasiosnipa1.png" alt="fisika" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <span class="card-cat-badge badge-fisika">IPA</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Simulasi OSN IPA 2 2026 – SMP </h3>
+            <p class="card-desc">Berlatih soal-soal OSN IPA 2.</p>
+            <div class="card-tags">
+              <span class="card-tag">Soal</span>
+              <span class="card-tag">OSN IPA</span>
+              <span class="card-tag">SMP</span>
+            </div>
+            <!-- ✏️ UBAH href ke link MPI Anda -->
+            <a href="https://bayusetiadji60-bot.github.io/Simulasi-OSN-IPA-Prop" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+        <!-- END KARTU 6 -->
+
+
+        <!-- ============================================================
+             🟢 TAMBAH KARTU MPI BARU DI SINI
+             Salin blok di bawah ini (dari MULAI SALIN sampai SELESAI SALIN),
+             tempel tepat di atas baris </div> penutup karya-grid,
+             lalu sesuaikan isinya.
+
+             === MULAI SALIN ===
+
+        <div class="mpi-card reveal">
+          <div class="card-thumb WARNA">
+            <div class="thumb-pattern"></div>
+            <span class="thumb-emoji">EMOJI</span>
+            <span class="card-cat-badge badge-WARNA">LABEL</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">JUDUL MPI ANDA</h3>
+            <p class="card-desc">Deskripsi singkat MPI Anda dalam 2-3 kalimat.</p>
+            <div class="card-tags">
+              <span class="card-tag">Fitur 1</span>
+              <span class="card-tag">Fitur 2</span>
+              <span class="card-tag">Kelas VII/VIII/IX</span>
+            </div>
+            <a href="LINK_MPI_ANDA" target="_blank" rel="noopener noreferrer" class="btn-play">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Mainkan Media
+            </a>
+          </div>
+        </div>
+
+             === SELESAI SALIN ===
+
+             Nilai WARNA yang tersedia:
+               fisika  → thumbnail biru muda
+               biologi → thumbnail hijau muda
+               kimia   → thumbnail kuning muda
+               bumi    → thumbnail merah muda
+             ============================================================ -->
+
+      </div><!-- end #karya-grid -->
+    </div>
+  </section>
+  <!-- END GALERI KARYA MPI -->
+
+  <!-- TENTANG -->
+  <section id="tentang" class="section">
+    <div class="container">
+      <div class="tentang-inner">
+        <div class="tentang-text reveal">
+          <span class="section-label">Tentang Saya</span>
+          <h2 class="section-title">Guru IPA yang <span>Berinovasi</span></h2>
+          <!-- ✏️ UBAH: bio singkat -->
+          <p>Saya adalah pendidik IPA yang percaya bahwa belajar sains bisa menjadi petualangan yang mengasyikkan. Dengan menggabungkan teknologi dan kreativitas, saya merancang media pembelajaran yang tidak hanya menjelaskan konsep, tetapi juga membuat siswa penasaran dan terlibat aktif.</p>
+          <p>Setiap MPI yang saya buat dirancang berdasarkan prinsip <em>belajar sambil bermain</em>—mengubah abstraksi IPA menjadi pengalaman nyata yang berkesan bagi generasi digital.</p>
+          <div class="tentang-pills">
+            <div class="pill">🔬 Guru IPA SMP</div>
+            <div class="pill">💡 Inovasi Pembelajaran</div>
+            <div class="pill">📱 Media Digital</div>
+          </div>
+        </div>
+        <div class="tentang-visual reveal">
+          <!-- ✏️ UBAH: info kartu -->
+          <div class="info-card"><div class="info-icon">🏫</div><div><div class="info-label">Instansi</div><div class="info-value">SMPN 3 Besuki</div></div></div>
+          <div class="info-card"><div class="info-icon">📚</div><div><div class="info-label">Mata Pelajaran</div><div class="info-value">Ilmu Pengetahuan Alam (IPA)</div></div></div>
+          <div class="info-card"><div class="info-icon">🗺️</div><div><div class="info-label">Lokasi</div><div class="info-value">Situbondo, Jawa Timur</div></div></div>
+          <div class="info-card"><div class="info-icon">🏆</div><div><div class="info-label">Fokus Inovasi</div><div class="info-value">Media Pembelajaran Interaktif</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="kontak">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-brand" style="color:#fff;">MPI<span>Lab</span> · Bayu</div>
+          <p>Portofolio Media Pembelajaran Interaktif IPA oleh Bayu Setiadji, S.Pd., Gr. Inovasi yang lahir dari kelas, untuk kelas.</p>
+          <!-- ✏️ UBAH: link sosial media -->
+          <div class="footer-social">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Beranda</a></li>
+            <li><a href="#karya">Galeri MPI</a></li>
+            <li><a href="#tentang">Tentang Saya</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <!-- ✏️ UBAH: data kontak -->
+          <div class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>bayusetiadji60@guru.smp.belajar.id</span>
+          </div>
+          <div class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Situbondo, Jawa Timur</span>
+          </div>
+          <div class="contact-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.21 1.13 2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>+62 8xx-xxxx-xxxx</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 <span>Bayu Setiadji, S.Pd., Gr.</span> — SMPN 3 Besuki. Semua hak cipta dilindungi.</span>
+        <span>Dibuat dengan ❤️ untuk pendidikan IPA Indonesia</span>
+      </div>
+    </div>
+  </footer>
+
+  <button id="backTop" aria-label="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const backTop = document.getElementById("backTop");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 20);
+      backTop.classList.toggle("show", window.scrollY > 300);
+    });
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = (i % 3) * 0.1 + "s";
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
